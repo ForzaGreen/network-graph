@@ -8,7 +8,7 @@ var app = new Vue({
   created: function () {
     var self = this;
 
-    d3.json("data.json", function(error, graph) {
+    d3.json("./data/data.json", function(error, graph) {
       if (error) throw error;
       self.myGraph = graph;
       buildSVG(graph);
