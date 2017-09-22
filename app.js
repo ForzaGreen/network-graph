@@ -95,18 +95,10 @@ function buildSVG(graph) {
     .enter().append("line")
     .attr("stroke-width", function(d) { return Math.sqrt(d.value); });
 
+  // Synchronize with HTML colors
   var groupToColor = {
     "1": "#00457D",
-    "2": "#00457D",
-    "3": "#585858",
-    "4": "#01DFA5",
-    "5": "#FFBF00",
-    "6": "#D8D8D8"
-  };
-
-  var groupToColorolorStroke = {
-    "1": "#00457D",
-    "2": "#F22A2A",
+    "2": "#5768F2",
     "3": "#585858",
     "4": "#01DFA5",
     "5": "#FFBF00",
