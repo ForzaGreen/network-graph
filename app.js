@@ -136,15 +136,17 @@ function buildSVG(graph) {
       .links(graph.links);
 
   function ticked() {
+    // This does not allow the node to go beyond svg limits
+    node
+        .attr("cx", function(d) { return d.x = Math.max(15, Math.min(width - 15, d.x)); })
+        .attr("cy", function(d) { return d.y = Math.max(15, Math.min(height - 15, d.y)); });
+
     link
         .attr("x1", function(d) { return d.source.x; })
         .attr("y1", function(d) { return d.source.y; })
         .attr("x2", function(d) { return d.target.x; })
         .attr("y2", function(d) { return d.target.y; });
 
-    node
-        .attr("cx", function(d) { return d.x; })
-        .attr("cy", function(d) { return d.y; });
   }
 
   function dragstarted(d) {
