@@ -2,13 +2,12 @@
 var app = new Vue({
   el: '#app', 
   data: {
-    // listGroups: ["1", "4", "7"],
     listGroups: ["1", "2", "3", "4", "5", "6", "7"],
     myGraph: {}
   },
   created: function () {
     var self = this;
-    // d3.json("miserables-2.json", function(error, graph) {
+
     d3.json("data.json", function(error, graph) {
       if (error) throw error;
       self.myGraph = graph;
@@ -26,7 +25,6 @@ var app = new Vue({
   },
   watch: {
     listGroups: function (newVal, oldVal) {
-      var self = this;
 
       var newNodes = this.myGraph.nodes.filter((e) => {
         return newVal.map(parseFloat).indexOf(e.group) > -1;
@@ -95,7 +93,7 @@ function buildSVG(graph) {
     .enter().append("line")
     .attr("stroke-width", function(d) { return Math.sqrt(d.value); });
 
-  // Synchronize with HTML colors
+  //TODO: Synchronize with HTML colors
   var groupToColor = {
     "1": "#00457D",
     "2": "#5768F2",
