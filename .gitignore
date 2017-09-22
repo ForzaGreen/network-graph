@@ -1,4 +1,6 @@
 *.xls*
 *12.html
 generator.js
-data.json
+data0.json
+data2.json
+node_modules/

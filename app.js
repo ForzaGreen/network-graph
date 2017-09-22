@@ -1,26 +1,15 @@
 
-
-
-// d3.json("miserables-2.json", function(error, graph) {
-//   if (error) throw error;
-//   buildSVG(graph);
-// });
-
-
-
-//-----------------------
-
-
-
 var app = new Vue({
   el: '#app', 
   data: {
-    listGroups: ["1", "4", "7"],
+    // listGroups: ["1", "4", "7"],
+    listGroups: ["1", "2", "3", "4", "5", "6", "7"],
     myGraph: {}
   },
   created: function () {
     var self = this;
-    d3.json("miserables-2.json", function(error, graph) {
+    // d3.json("miserables-2.json", function(error, graph) {
+    d3.json("data.json", function(error, graph) {
       if (error) throw error;
       self.myGraph = graph;
       buildSVG(graph);
@@ -37,11 +26,7 @@ var app = new Vue({
   },
   watch: {
     listGroups: function (newVal, oldVal) {
-      // console.log(oldVal);
-      // console.log(newVal);
-      // console.log(this.myGraph);
       var self = this;
-      console.log("-------------");
 
       var newNodes = this.myGraph.nodes.filter((e) => {
         return newVal.map(parseFloat).indexOf(e.group) > -1;
@@ -85,10 +70,6 @@ var app = new Vue({
         links: newLinks
       };
 
-      
-      console.log(JSON.stringify(newNodesArray));
-      console.log(newGraph);
-
       buildSVG(newGraph);
     }
   }
@@ -115,9 +96,21 @@ function buildSVG(graph) {
     .attr("stroke-width", function(d) { return Math.sqrt(d.value); });
 
   var groupToColor = {
-    "1": "blue",
-    "4": "red", 
-    "7": "green"
+    "1": "#00457D",
+    "2": "#00457D",
+    "3": "#585858",
+    "4": "#01DFA5",
+    "5": "#FFBF00",
+    "6": "#D8D8D8"
+  };
+
+  var groupToColorolorStroke = {
+    "1": "#00457D",
+    "2": "#F22A2A",
+    "3": "#585858",
+    "4": "#01DFA5",
+    "5": "#FFBF00",
+    "6": "#D8D8D8"
   };
 
   var node = svg.append("g")
@@ -172,65 +165,3 @@ function buildSVG(graph) {
   }
 }
 
-// var graph = {
-//   "nodes": [
-//     {"id": "Myriel", "group": 1},
-//     {"id": "Napoleon", "group": 1},
-//     {"id": "Mlle.Baptistine", "group": 0},
-//     {"id": "Mme.Magloire", "group": 7},
-//     {"id": "CountessdeLo", "group": 7},
-//     {"id": "Geborand", "group": 1},
-//     {"id": "Champtercier", "group": 1},
-//     {"id": "Cravatte", "group": 0},
-//     {"id": "Count", "group": 7},
-//     {"id": "OldMan", "group": 1},
-//     {"id": "Fauchelevent", "group": 0},
-//     {"id": "MotherInnocent", "group": 1},
-//     {"id": "Gribier", "group": 0},
-//     {"id": "Jondrette", "group": 7},
-//     {"id": "Mme.Burgon", "group": 7}
-//   ],
-//   "links": [
-//     {"source": "Napoleon", "target": "Myriel", "value": 1},
-//     {"source": "Napoleon", "target": "Myriel", "value": 1},
-//     {"source": "Mme.Magloire", "target": "Myriel", "value": 10},
-//     {"source": "Mme.Magloire", "target": "Mlle.Baptistine", "value": 6},
-//     {"source": "CountessdeLo", "target": "Myriel", "value": 1},
-//     {"source": "Geborand", "target": "Myriel", "value": 1},
-//     {"source": "Champtercier", "target": "Myriel", "value": 1},
-//     {"source": "Cravatte", "target": "Myriel", "value": 1},
-//     {"source": "Count", "target": "Myriel", "value": 2},
-//     {"source": "OldMan", "target": "Myriel", "value": 1},
-//     {"source": "MotherInnocent", "target": "Fauchelevent", "value": 3},
-//     {"source": "Gribier", "target": "Fauchelevent", "value": 2},
-//     {"source": "Mme.Burgon", "target": "Jondrette", "value": 1},
-//     {"source": "Mlle.Baptistine", "target": "MotherInnocent", "value": 1},
-//     {"source": "Napoleon", "target": "Jondrette", "value": 1}
-//   ]
-// }
-
-// var graph2 = {
-//   "nodes": [
-//     {"id": "Napoleon", "group": 1},
-//     {"id": "Mlle.Baptistine", "group": 0},
-//     {"id": "Mme.Magloire", "group": 7},
-//     {"id": "CountessdeLo", "group": 7},
-//     {"id": "Geborand", "group": 1},
-//     {"id": "Champtercier", "group": 1},
-//     {"id": "Cravatte", "group": 0},
-//     {"id": "Count", "group": 7},
-//     {"id": "OldMan", "group": 1},
-//     {"id": "Fauchelevent", "group": 0},
-//     {"id": "MotherInnocent", "group": 1},
-//     {"id": "Gribier", "group": 0},
-//     {"id": "Jondrette", "group": 7},
-//     {"id": "Mme.Burgon", "group": 7}
-//   ],
-//   "links": [
-//     {"source": "MotherInnocent", "target": "Fauchelevent", "value": 3},
-//     {"source": "Gribier", "target": "Fauchelevent", "value": 2},
-//     {"source": "Mme.Burgon", "target": "Jondrette", "value": 1},
-//     {"source": "Mlle.Baptistine", "target": "MotherInnocent", "value": 1},
-//     {"source": "Napoleon", "target": "Jondrette", "value": 1}
-//   ]
-// };
