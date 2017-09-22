@@ -40,20 +40,27 @@
     </div>
 
 
-    <div class="container">
+    <div id="app" class="container">
 
       <div class="page-header" id="banner">
         <div class="row">
           <div class="col-lg-8 col-md-7 col-sm-6">
             <h1>Cosmo</h1>
             <p class="lead">An ode to Metro</p>
+            <div>
+              <input type="checkbox" id="jack" value="1" v-model="listGroups"><label for="jack">1</label>
+              <input type="checkbox" id="john" value="4" v-model="listGroups"><label for="john">4</label>
+              <input type="checkbox" id="mike" value="7" v-model="listGroups"><label for="mike">7</label>
+              <br>
+              <span>Checked names: {{ listGroups }}</span></div>
           </div>
 
         </div>
         <div class="row">
           <div class="text-center">
             <!-- "text-center" or svg class="center-block" -->
-            <svg width="960" height="600"></svg>
+            <!-- <svg width="960" height="600"></svg> -->
+            <svg width="560" height="300"></svg>
           </div>
         </div>
       </div>
@@ -76,6 +83,7 @@
     <script src="./jquery-1.10.2.min.js"></script>
     <script src="./bootstrap.min.js"></script>
     <script src="./d3.v4.min.js"></script>
+    <script type="text/javascript" src="./vue.min.js"></script>
     <script type="text/javascript" src="./app.js"></script>
   </body>
 </html>

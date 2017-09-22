@@ -3,7 +3,17 @@
   stroke-opacity: 0.6;
 }
 
-.nodes circle {
+/*.nodes circle {
   stroke: #fff;
   stroke-width: 1.5px;
-}
+}*/
+
+circle
+    {
+    width:50px;
+    height:50px;
+    border-radius:250px;
+    
+    color:green;
+    background:#000
+    }

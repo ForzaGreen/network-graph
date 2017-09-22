@@ -1,2 +1,4 @@
 *.xls*
 *12.html
+generator.js
+data.json
