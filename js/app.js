@@ -7,7 +7,7 @@ var app = new Vue({
   },
   created: function () {
     var self = this;
-
+    // Load data
     d3.json("./data/data.json", function(error, graph) {
       if (error) throw error;
       self.myGraph = graph;
@@ -24,6 +24,7 @@ var app = new Vue({
     }
   },
   watch: {
+    // Whenever listGroups changes (i.e. groups filtered) rebuild the graph
     listGroups: function (newVal, oldVal) {
 
       var newNodes = this.myGraph.nodes.filter((e) => {
@@ -74,7 +75,10 @@ var app = new Vue({
 })
 
 function buildSVG(graph) {
+  // Destroy all element in the main svg
   d3.select('svg').selectAll('*').remove();
+
+  // Rebuild the main svg from scratch
   var svg = d3.select("svg"),
     width = +svg.attr("width"),
     height = +svg.attr("height");
@@ -91,7 +95,7 @@ function buildSVG(graph) {
     .selectAll("line")
     .data(graph.links)
     .enter().append("line")
-    .attr("stroke-width", function(d) { return Math.sqrt(d.value); });
+    // .attr("stroke-width", function(d) { return Math.sqrt(d.value); });
 
   //TODO: Synchronize with HTML colors
   var groupToColor = {
