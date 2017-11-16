@@ -1,5 +1,5 @@
 # Dockerfile
-# publish a static server to nginx
+# publish a static website to nginx
 
 FROM nginx:alpine
 COPY . /usr/share/nginx/html
